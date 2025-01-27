@@ -1,0 +1,110 @@
+<Page x:Class="UI.pages.Timer"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:UI.pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Timer">
+
+    <Grid>
+        <Border Width="300" 
+                Height="400" 
+                Background="White" 
+                CornerRadius="20" 
+                Effect="{DynamicResource MaterialDesignElevationShadow2}">
+            <Grid Margin="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- Title -->
+                <TextBlock Text="Pomodoro Timer"
+                         FontSize="24"
+                         FontWeight="SemiBold"
+                         HorizontalAlignment="Center"
+                         Margin="0,0,0,20"/>
+
+                <!-- Timer Display -->
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Timer Circle -->
+                    <Canvas x:Name="TimerCanvas" 
+                            Width="200" 
+                            Height="200">
+                        <!-- Background Circle -->
+                        <Ellipse Width="200" 
+                                 Height="200" 
+                                 Stroke="#E0E0E0" 
+                                 StrokeThickness="10"/>
+                        
+                        <!-- Progress Circle -->
+                        <Path x:Name="ProgressArc" 
+                              Fill="#2196F3"
+                              Opacity="0.3"/>
+
+                        <!-- Time Display -->
+                        <TextBlock x:Name="TimeDisplay"
+                                   FontSize="40"
+                                   FontWeight="SemiBold"
+                                   Text="30:00"
+                                   Canvas.Left="50"
+                                   Canvas.Top="80"/>
+                    </Canvas>
+
+                    <!-- Status Text -->
+                    <TextBlock x:Name="StatusText"
+                               Grid.Row="1"
+                               Text="Ready to start"
+                               FontSize="16"
+                               HorizontalAlignment="Center"
+                               Margin="0,20,0,0"/>
+                </Grid>
+
+                <!-- Control Buttons -->
+                <StackPanel Grid.Row="2" 
+                          Orientation="Horizontal" 
+                          HorizontalAlignment="Center" 
+                          Margin="0,20,0,0">
+                    <Button x:Name="StartButton"
+                            Content="Start"
+                            Width="80"
+                            Height="35"
+                            Margin="0,0,10,0"
+                            Background="#2196F3"
+                            Foreground="White"
+                            BorderThickness="0"
+                            Click="StartButton_Click">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="17.5"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+
+                    <Button x:Name="ResetButton"
+                            Content="Reset"
+                            Width="80"
+                            Height="35"
+                            Background="#757575"
+                            Foreground="White"
+                            BorderThickness="0"
+                            Click="ResetButton_Click">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="17.5"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</Page>

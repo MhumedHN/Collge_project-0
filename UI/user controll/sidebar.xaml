@@ -1,0 +1,96 @@
+<UserControl x:Class="UI.user_controll.sidebar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             Background="Transparent"
+             HorizontalAlignment="Stretch"
+             VerticalAlignment="Stretch">
+    <UserControl.Resources>
+        <!-- Button Style -->
+        <Style x:Key="ModernSidebarButton" TargetType="Button">
+            <Setter Property="Height" Value="45" />
+            <Setter Property="Margin" Value="15,5" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="#90ffffff" />
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="FontWeight" Value="Regular" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="HorizontalContentAlignment" Value="Left" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" 
+                                Background="{TemplateBinding Background}" 
+                                CornerRadius="8"
+                                Padding="15,0">
+                            <Grid>
+                                <ContentPresenter x:Name="content" 
+                                                HorizontalAlignment="Left" 
+                                                VerticalAlignment="Center"/>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#40ffffff" />
+                                <Setter Property="Foreground" Value="#ffffff" />
+                                <Setter TargetName="border" Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect ShadowDepth="0" BlurRadius="15" Color="#20ffffff"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#50ffffff" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid>
+        <StackPanel>
+            <!-- Logo or Title -->
+            <TextBlock Text="MH" 
+                       Foreground="#ffffff" 
+                       FontSize="24" 
+                       Margin="20,30,20,40" 
+                       HorizontalAlignment="Left"
+                       FontWeight="SemiBold" 
+                       FontFamily="Segoe Script" />
+
+            <!-- Navigation Buttons -->
+            <Button Style="{StaticResource ModernSidebarButton}" Click="NavigateToHome">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="🏠" FontSize="18" Margin="0,0,15,0"/>
+                    <TextBlock Text="Home" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Button>
+
+            <Button Style="{StaticResource ModernSidebarButton}" Click="NavigateToTasks">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="📋" FontSize="18" Margin="0,0,15,0"/>
+                    <TextBlock Text="Tasks" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Button>
+
+            <Button Style="{StaticResource ModernSidebarButton}" Click="NavigateToCharts">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="📊" FontSize="18" Margin="0,0,15,0"/>
+                    <TextBlock Text="Charts" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Button>
+
+            <Button Style="{StaticResource ModernSidebarButton}" Click="NavigateToTimer">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="⏱️" FontSize="18" Margin="0,0,15,0"/>
+                    <TextBlock Text="Timer" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

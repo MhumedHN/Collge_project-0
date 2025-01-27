@@ -1,0 +1,32 @@
+<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UI"
+        xmlns:user_controll="clr-namespace:UI.user_controll" 
+        x:Class="UI.MainWindow"
+        mc:Ignorable="d"
+        Title="Task Manager" Height="650" Width="1000"
+        WindowStartupLocation="CenterScreen"
+        Background="#f0f2f5">
+    <Grid>
+        <!-- Define the columns -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250" />
+            <!-- Fixed width sidebar -->
+            <ColumnDefinition Width="*" />
+            <!-- Main content column -->
+        </Grid.ColumnDefinitions>
+
+        <!-- Sidebar -->
+        <Border Grid.Column="0" Background="#1a1c23" CornerRadius="0,15,15,0">
+            <user_controll:sidebar x:Name="Sidebar" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+        </Border>
+
+        <!-- Main Content -->
+        <Border Grid.Column="1" Background="White" Margin="20,10,10,10" CornerRadius="15" Effect="{DynamicResource MaterialDesignElevationShadow2}">
+            <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" />
+        </Border>
+    </Grid>
+</Window>
